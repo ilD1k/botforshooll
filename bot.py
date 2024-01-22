@@ -1,6 +1,5 @@
 import telebot
 from telebot.types import Message
-from config import token
 from jso4k import write_to_file, read_from_db
 
 def update_user_data():
@@ -8,7 +7,7 @@ def update_user_data():
 
 user_data = update_user_data()
 
-bot = telebot.TeleBot(token)
+bot = telebot.TeleBot("6616040449:AAFniOl3fX5YWtKQ_w28vC9WaN0L4h6ILBU")
 
 @bot.message_handler(commands=["start"])
 def start(message:Message):
