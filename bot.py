@@ -1,6 +1,6 @@
 import telebot
 from telebot.types import Message
-from config import token, token2
+from config import token
 from jso4k import write_to_file, read_from_db
 
 def update_user_data():
