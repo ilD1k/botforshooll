@@ -23,6 +23,7 @@ def admin(message):
     bot.send_message(message.chat.id, "Ку илюх"
                                       " Кидай расписание")
     bot.register_next_step_handler(message, send_raspisane)
+    
 
 def send_raspisane(message):
     user_data = update_user_data()
