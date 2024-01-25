@@ -1,6 +1,6 @@
 import telebot
 from telebot.types import Message
-from config import token
+from config import token, token2
 from jso4k import write_to_file, read_from_db
 
 def update_user_data():
@@ -35,8 +35,13 @@ def help(message):
     bot.send_message(message.chat.id, "Все сломал или нашел не дочёты?")
     bot.send_message(message.chat.id, 'Свяжись с [создателем](https://t.me/ildics)',
                      parse_mode='Markdown', )
+    write_to_file(user_data)
 
 
+@bot.message_handler(content_types=["text"])
+def aga(message):
+    bot.send_message(message.chat.id, "И тебе привет")
+    write_to_file(user_data)
 
 
 
