@@ -1,6 +1,6 @@
 import telebot
 from telebot.types import Message
-from config import token
+from config import token2
 from jso4k import write_to_file, read_from_db
 
 def update_user_data():
@@ -8,7 +8,7 @@ def update_user_data():
 
 user_data = update_user_data()
 
-bot = telebot.TeleBot(token)
+bot = telebot.TeleBot(token2)
 
 @bot.message_handler(commands=["start"])
 def start(message:Message):
@@ -38,12 +38,10 @@ def help(message):
     write_to_file(user_data)
 
 
-@bot.message_handler(content_types=["text"])
+@bot.message_handler(func=lambda message: True)
 def aga(message):
     bot.send_message(message.chat.id, "И тебе привет")
     write_to_file(user_data)
-
-
 
 
 
