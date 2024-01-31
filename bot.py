@@ -1,6 +1,6 @@
 import telebot
 from telebot.types import Message
-from config import token
+from config import token2
 from jso4k import write_to_file, read_from_db
 
 def update_user_data():
@@ -8,7 +8,7 @@ def update_user_data():
 
 user_data = update_user_data()
 
-bot = telebot.TeleBot(token)
+bot = telebot.TeleBot(token2)
 
 @bot.message_handler(commands=["start"])
 def start(message:Message):
@@ -28,7 +28,10 @@ def admin(message):
 def send_raspisane(message):
     user_data = update_user_data()
     for chat_id in user_data:
-        bot.send_message(chat_id, message.text)
+        try:
+            bot.send_message(chat_id, message.text)
+        except Exception as e:
+            print(e, "сломали бота")
 
 @bot.message_handler(commands=["help"])
 def help(message):
@@ -46,6 +49,5 @@ def aga(message):
 
 
 
+
 bot.polling()
-
-
