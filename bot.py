@@ -15,7 +15,8 @@ bot = telebot.TeleBot(token)
 
 @bot.message_handler(commands=["start"])
 def start(message: Message):
-    bot.send_message(message.chat.id, "привет")
+    name = message.chat.first_name
+    bot.send_message(message.chat.id, f'Привет! {name}.\n')
     bot.send_message(message.chat.id, "бот рассылает расписание уроков для 7 д класса")
     user_data[message.chat.id] = message.chat.id
     write_to_file(user_data)
@@ -51,7 +52,8 @@ def kirill(message):
 
 @bot.message_handler(func=lambda message: True)
 def aga(message):
-    bot.send_message(message.chat.id, "И тебе привет")
+    name = message.chat.first_name
+    bot.send_message(message.chat.id, f'И тебе привет! {name}.\n')
     write_to_file(user_data)
 
 
