@@ -58,6 +58,16 @@ def kirill(message):
     bot.forward_message(5085094693, message.chat.id, message.id)
     write_to_file(user_data)
 
+
+@bot.message_handler(content_types=["text"], func=lambda message: message.text == "дурачье")
+def dyrachyo(message):
+    bot.send_message(message.chat.id, "Да как ты нашел эту фичу??")
+    with open("scale_1200.jfif", "rb") as photo:
+        bot.send_photo(message.chat.id, photo)
+    bot.register_next_step_handler(message, help)
+    write_to_file(user_data)
+
+
 @bot.message_handler(func=lambda message: True)
 def aga(message):
     name = message.chat.first_name
@@ -68,6 +78,7 @@ def aga(message):
 def sticker(message):
     write_to_file(user_data)
     bot.send_message(message.chat.id, choice(phrases))
+
 
 
 bot.polling()
