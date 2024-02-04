@@ -2,6 +2,12 @@ import telebot
 from telebot.types import Message
 from config import token
 from jso4k import write_to_file, read_from_db
+from random import choice
+
+
+phrases = ["Уффффф чо за гипер стикер пупсик", "Эта типа малеф до травмы в 1999?", "Топ топ ножками в школу рабы системы",
+           "пон", "Поньк", "мегапон", "харош", "сигма", "не будь дурак саси кулак стэтхем"]
+
 
 
 def update_user_data():
@@ -11,6 +17,7 @@ def update_user_data():
 user_data = update_user_data()
 
 bot = telebot.TeleBot(token)
+
 
 
 @bot.message_handler(commands=["start"])
@@ -49,6 +56,7 @@ def help(message):
 def kirill(message):
     bot.send_message(message.chat.id, "Привет кирюх твое сообщение уже было отправлено Илье")
     bot.forward_message(5085094693, message.chat.id, message.id)
+    write_to_file(user_data)
 
 @bot.message_handler(func=lambda message: True)
 def aga(message):
@@ -56,7 +64,10 @@ def aga(message):
     bot.send_message(message.chat.id, f'И тебе привет! {name}.\n')
     write_to_file(user_data)
 
-
+@bot.message_handler(content_types=["sticker"])
+def sticker(message):
+    write_to_file(user_data)
+    bot.send_message(message.chat.id, choice(phrases))
 
 
 bot.polling()
