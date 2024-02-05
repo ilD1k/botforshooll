@@ -62,7 +62,7 @@ def kirill(message):
 @bot.message_handler(content_types=["text"], func=lambda message: message.text == "дурачье")
 def dyrachyo(message):
     bot.send_message(message.chat.id, "Да как ты нашел эту фичу??")
-    with open("botforshooll/da.png", "rb") as photo:
+    with open("./da.png", "rb") as photo:
         bot.send_photo(message.chat.id, photo)
     bot.register_next_step_handler(message, help)
     write_to_file(user_data)
