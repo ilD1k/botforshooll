@@ -8,7 +8,7 @@ from random import choice
 phrases = ["Уффффф чо за гипер стикер пупсик", "Эта типа малеф до травмы в 1999?", "Топ топ ножками в школу рабы системы",
            "пон", "Поньк", "мегапон", "харош", "сигма", "не будь дурак саси кулак стэтхем"]
 
-
+phrasesandro = ["Приветствую! Андро", "Здаров!", "Опять сф в мид???", "Че как оно"]
 
 def update_user_data():
     return read_from_db()
@@ -58,13 +58,16 @@ def kirill(message):
     bot.forward_message(5085094693, message.chat.id, message.id)
     write_to_file(user_data)
 
-@bot.message_handler(content_types=["text"], func=lambda message: message.text == "дурачье")
-def dyrachyo(message):
-    bot.send_message(message.chat.id, "Да как ты нашел эту фичу??")
+@bot.message_handler(content_types=["text"], func=lambda message: message.from_user.id == 1305549090)
+def andro(message):
+    name = message.chat.first_name
+    bot.send_message(message.chat.id, choice(phrasesandro))
+    bot.forward_message(5085094693, message.chat.id, message.id)
     with open("./da.png", "rb") as photo:
         bot.send_photo(message.chat.id, photo)
     bot.register_next_step_handler(message, help)
     write_to_file(user_data)
+
 
 
 @bot.message_handler(func=lambda message: True)
