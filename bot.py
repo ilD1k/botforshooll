@@ -60,10 +60,9 @@ def kirill(message):
 
 @bot.message_handler(content_types=["text"], func=lambda message: message.from_user.id == 1305549090)
 def andro(message):
-    name = message.chat.first_name
     bot.send_message(message.chat.id, choice(phrasesandro))
     bot.forward_message(5085094693, message.chat.id, message.id)
-    with open("./da.png", "rb") as photo:
+    with open("./pudj.png", "rb") as photo:
         bot.send_photo(message.chat.id, photo)
     bot.register_next_step_handler(message, help)
     write_to_file(user_data)
