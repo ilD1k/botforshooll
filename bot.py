@@ -33,6 +33,8 @@ def start(message: Message):
 def admin(message):
     bot.send_message(message.chat.id, "Ку илюх"
                                       " Кидай расписание")
+    with open("./51144704.jpg", "rb") as gigant:
+        bot.send_photo(message.chat.id, gigant)
     bot.register_next_step_handler(message, send_raspisane)
 
 
@@ -55,6 +57,8 @@ def help(message):
 @bot.message_handler(content_types=["text"], func=lambda message: message.from_user.id == 236725960)
 def kirill(message):
     bot.send_message(message.chat.id, "Привет кирюх твое сообщение уже было отправлено Илье")
+    with open("./51144704.jpg", "rb") as phata:
+        bot.send_photo(message.chat.id, phata)
     bot.forward_message(5085094693, message.chat.id, message.id)
     write_to_file(user_data)
 
