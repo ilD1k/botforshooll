@@ -1,6 +1,6 @@
 import telebot
 from telebot.types import Message
-from config import token2
+from config import token
 from jso4k import write_to_file, read_from_db
 from random import choice
 
@@ -36,7 +36,7 @@ def update_user_data():
 
 user_data = update_user_data()
 
-bot = telebot.TeleBot(token2)
+bot = telebot.TeleBot(token)
 
 
 
@@ -102,7 +102,6 @@ def day_of_ucheba(message):
 
     else:
         bot.register_next_step_handler(message, help)
-
 
 
 
