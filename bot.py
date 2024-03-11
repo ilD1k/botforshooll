@@ -52,10 +52,7 @@ def start(message: Message):
 
 @bot.message_handler(commands=["admin"], func=lambda message: message.from_user.id == 5085094693)
 def admin(message):
-    bot.send_message(message.chat.id, "Ку илюх"
-                                      " Кидай расписание")
-    with open("./51144704.jpg", "rb") as gigant:
-        bot.send_photo(message.chat.id, gigant)
+    bot.send_message(message.chat.id, "Отправляй расписание")
     bot.register_next_step_handler(message, send_raspisane)
 
 
