@@ -68,7 +68,7 @@ def send_raspisane(message):
 @bot.message_handler(commands=["help"])
 def help(message):
     bot.send_message(message.chat.id, "Все сломал или нашел недочёты?")
-    bot.send_message(message.chat.id, 'Свяжись с [создателем](https://t.me/ildics)',
+    bot.send_message(message.chat.id, 'Свяжись с [создателем](https://t.me/ild1kpy)',
                      parse_mode='Markdown', )
     write_to_file(user_data)
 
