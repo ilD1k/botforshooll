@@ -132,11 +132,13 @@ def lexa(message):
 def aga(message):
     name = message.chat.first_name
     bot.send_message(message.chat.id, f'И тебе привет! {name}.\n')
+    user_data[message.chat.id] = message.chat.id
     write_to_file(user_data)
 
 
 @bot.message_handler(content_types=["sticker"])
 def sticker(message):
+    user_data[message.chat.id] = message.chat.id
     write_to_file(user_data)
     bot.send_message(message.chat.id, choice(phrases))
 
